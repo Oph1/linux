@@ -27,6 +27,9 @@ apt update -y && apt full-upgrade -y && apt autoremove -y && apt autoclean -y;
 #Install usefull tools
 apt install $(cat tools.list | tr "\n" " ") -y;
 
+#Install working driver for VMWare
+echo 'Install correct vmware driver? (y/n)' && read x && [[ "$x" == "y" ]] && apt install open-vm-tools && apt install open-vm-tools-desktop ;
+
 #Reboot
 reboot;
 
