@@ -1,5 +1,33 @@
-#/bin/bash
+#!/bin/bash
 
-sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y
+#Check sudo
+if [[ "$EUID" = 0 ]]; then
+    echo "(1) already root"
+else
+    sudo -k # make sure to ask for password on next sudo
+    if sudo true; 
+    then echo "(2) correct password"
+    else echo "(3) wrong password" && exit 1
+    fi
+fi
+# Do your sudo stuff here. Password will not be asked again due to caching.
 
-sudo apt install $(cat tools.list | tr "\n" " ") -y
+#Variables
+Keyboard=fr
+
+#Functions:
+reboot () { echo 'Reboot? (y/n)' && read x && [[ "$x" == "y" ]] && /sbin/reboot; }
+
+#Change keyboard country
+sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="'&Keyboard'"/' /etc/default/keyboard;
+
+#Full update system
+apt update -y && apt full-upgrade -y && apt autoremove -y && apt autoclean -y;
+
+#Install usefull tools
+apt install $(cat tools.list | tr "\n" " ") -y;
+
+#Reboot
+reboot;
+
+exit 0;
