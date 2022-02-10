@@ -13,13 +13,13 @@ fi
 # Do your sudo stuff here. Password will not be asked again due to caching.
 
 #Variables
-Keyboard=fr
+$Keyboard=fr;
 
 #Functions:
 reboot () { echo 'Reboot? (y/n)' && read x && [[ "$x" == "y" ]] && /sbin/reboot; }
 
 #Change keyboard country
-sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="'&Keyboard'"/' /etc/default/keyboard;
+sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="fr"/' /etc/default/keyboard;
 
 #Full update system
 apt update -y && apt full-upgrade -y && apt autoremove -y && apt autoclean -y;
