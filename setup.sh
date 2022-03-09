@@ -29,6 +29,7 @@ apt install $(cat tools.list | tr "\n" " ") -y;
 
 #Alias and function
 echo 'alias nm="nmap"' >> ~/.bash_aliases
+echo 'alias maj=apt update -y && apt full-upgrade -y && apt autoremove -y && apt autoclean -y"' >> ~/.bash_aliases
 #echo 'function mkcd { mkdir -p -- "$1" && cd -P -- "$1" }' >> ~/.bash_aliases
 
 #Install working driver for VMWare
