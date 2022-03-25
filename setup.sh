@@ -25,7 +25,7 @@ echo 'Install correct vmware driver? (y/N)' && read x && [[ "$x" == "y" ]] && ap
 sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="fr"/' /etc/default/keyboard;
 
 #Full update system
-apt update -y && apt full-upgrade -y && apt autoremove -y && apt autoclean -y;
+apt update -y && apt full-upgrade -y --allow-downgrades && apt autoremove -y && apt autoclean -y;
 
 #Install usefull tools
 apt install $(cat tools.list | tr "\n" " ") -y;
