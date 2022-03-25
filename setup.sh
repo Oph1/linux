@@ -16,10 +16,10 @@ fi
 $Keyboard=fr;
 
 #Functions:
-reboot () { echo 'Reboot? (y/n)' && read x && [[ "$x" == "y" ]] && /sbin/reboot; }
+reboot () { echo 'Reboot? (y/N)' && read x && [[ "$x" == "y" ]] && /sbin/reboot; }
 
 #Install working driver for VMWare
-echo 'Install correct vmware driver? (y/n)' && read x && [[ "$x" == "y" ]] && apt install open-vm-tools && apt install open-vm-tools-desktop ;
+echo 'Install correct vmware driver? (y/N)' && read x && [[ "$x" == "y" ]] && apt install open-vm-tools && apt install open-vm-tools-desktop ;
 
 #Change keyboard country
 sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="fr"/' /etc/default/keyboard;
