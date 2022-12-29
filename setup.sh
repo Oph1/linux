@@ -33,6 +33,9 @@ apt install $(cat tools.list | tr "\n" " ") -y;
 #Alias and function
 echo 'alias nm="nmap"' >> ~/.bash_aliases
 echo 'alias maj="sudo apt update -y && sudo apt full-upgrade -y && sudo apt autoremove -y && sudo apt autoclean -y"' >> ~/.bash_aliases
+echo 'alias gobusterz="gobuster dir --wordlist /usr/share/dirbuster/wordlists/directory-list-lowercase-2.3-medium.txt --url "' >> ~/.bash_aliases
+echo 'alias s="sudo"' >> ~/.bash_aliases
+echo 'alias nmapz="nmap -sC -p- -sV $1"' >> ~/.bash_aliases
 #echo 'function mkcd { mkdir -p -- "$1" && cd -P -- "$1" }' >> ~/.bash_aliases
 
 #Reboot
